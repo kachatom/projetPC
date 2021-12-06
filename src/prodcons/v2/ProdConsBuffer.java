@@ -1,4 +1,4 @@
-package prodcons.v1;
+package prodcons.v2;
 
 import java.util.Properties;
 
@@ -40,7 +40,7 @@ public class ProdConsBuffer implements IProdConsBuffer {
 			try {
 				wait();
 			} catch (InterruptedException e) {
-				throw new InterruptedException("Buffer vide");
+				return null;
 			}
 		}
 		Message m = buffer[out];
