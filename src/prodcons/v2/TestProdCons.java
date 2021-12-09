@@ -26,6 +26,8 @@ public class TestProdCons {
 		Producer prods[] = new Producer[nProd]; // liste des threads producteurs
 		Consumer cons[] = new Consumer[nCons]; // liste des threads consommateurs
 
+
+		long start = System.currentTimeMillis();
 		int ip = 0;
 		int ic = 0;
 		for (int i = 0; (ip < nProd) || (ic < nCons); i++) {
@@ -48,6 +50,10 @@ public class TestProdCons {
 		for (int i = 0; i < ic; i++) {
 			cons[i].join();
 		}
+
+		long end = System.currentTimeMillis();
+		long duration =  end - start ;
+		System.out.println("l'execution a durée :" + duration + "ms");
 		System.out.println("Main terminated");
 	}
 }

@@ -28,6 +28,7 @@ public class TestProdCons {
 
 		int ip = 0;
 		int ic = 0;
+		long start = System.currentTimeMillis();
 		for (int i = 0; (ip < nProd) || (ic < nCons); i++) {
 			int gen = generator.nextInt(2); // choisi de maniere random si on lance un producer(0) ou un consumer(1)
 			if (((gen == 0) && (ip < nProd)) || (ip == 0)) { // ip == 0 pour etre sur de commencer avec un producer
@@ -48,6 +49,9 @@ public class TestProdCons {
 		for (int i = 0; i < ic; i++) {
 			cons[i].join();
 		}
+		long end = System.currentTimeMillis();
+		long duration =  end - start ;
+		System.out.println("l'execution a durée :" + duration + "ms");
 		System.out.println("Main terminated");
 	}
 }
