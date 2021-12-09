@@ -11,7 +11,7 @@ public class TestProdCons {
 		Properties properties = new Properties();
 		// il faut parser toutes les données qui sont dans le fichier option.xml
 		// pour recuperer toutes les valeurs concernant les productions et consommations.
-		properties.loadFromXML(new FileInputStream("projetPC-main/src/prodcons/v1/option.xml"));
+		properties.loadFromXML(new FileInputStream("src/prodcons/v1/option.xml"));
 		int nProd = Integer.parseInt(properties.getProperty("nProd"));
 		int nCons = Integer.parseInt(properties.getProperty("nCons"));
 		int bufSz = Integer.parseInt(properties.getProperty("bufSz"));

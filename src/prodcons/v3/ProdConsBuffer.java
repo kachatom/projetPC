@@ -5,12 +5,12 @@ import java.util.concurrent.Semaphore;
 
 public class ProdConsBuffer implements IProdConsBuffer {
 
-	int nMesTotal; // nombre total de message produit ??
+	int nMesTotal; // nombre total de message produit
 	int bufSz; // taille du buffer
 	Message buffer[]; // liste des messages dans le buffer
 	int in, out; // indice d'entrée et de sorties des messages dans le buffer
 	int nbProdAlive; // nombre de producer qui n'ont pas fini toutes leur production
-	Semaphore sProd, sCons; // semaphore pour le consumer et consumer
+	Semaphore sProd, sCons; // semaphore pour le producer et le consumer
 
 	ProdConsBuffer(int bufsize, int nbProdAlive) {
 		nMesTotal = 0;

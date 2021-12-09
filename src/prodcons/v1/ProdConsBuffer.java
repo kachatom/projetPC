@@ -5,7 +5,7 @@ import java.util.Properties;
 public class ProdConsBuffer implements IProdConsBuffer {
 
 	int nMes; // nombre des message dans le buffer
-	int nMesTotal; // nombre total de message produit ??
+	int nMesTotal; // nombre total de message produit
 	int bufSz; // taille du buffer
 	Message buffer[]; // liste des messages dans le buffer
 	int in, out; // indice d'entrée et de sorties des messages dans le buffer
@@ -36,7 +36,7 @@ public class ProdConsBuffer implements IProdConsBuffer {
 		notifyAll();
 	}
 
-	// recupère le msg m (1er de la liste type FIFO avec in et out)
+	// recupère le msg m (1er de la liste de manière FIFO avec in et out)
 	@Override
 	public synchronized Message get() throws InterruptedException {
 		while (nMes == 0) { // vérifie que le buffer n'est pas vide

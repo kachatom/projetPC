@@ -21,7 +21,7 @@ public class Consumer extends Thread {
 				Random generator = new Random();
 				if (buffer.ready()) {  // test pour s'assurer qu'on a besoin d'un consumer
 					int pileface = generator.nextInt(2); // un peu de random pour décider du nombre de messages que le consumer va retirer
-					if ((pileface == 0) && (buffer.sCons.availablePermits() >= k)){ // on regarde si le nombre de message à retirer
+					if ((pileface == 0) && (buffer.sCons.availablePermits() >= k)){ // on regarde si il existe bien au moins k messages dans le buffer
 						Message[] m = buffer.get(k); // on retire une liste de msg de taille k
 						System.out.print("Consumer " + id + " consomme les messages : ");
 						for (int i = 0; i<k-1; i++) {

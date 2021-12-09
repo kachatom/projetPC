@@ -20,7 +20,7 @@ public class Consumer extends Thread {
 				Random generator = new Random();
 				Message m = buffer.get(); // recupere un message
 				System.out.println(id + " consomme le message " + m.id);
-				sleep(consTime* 1000 + generator.nextInt(1000) - 500); // simule le temps de consommation d'un message
+				sleep(consTime* 1000 + generator.nextInt(1000) - 500); // simule le temps de consommation d'un message aléatoirement
 			} catch (InterruptedException e) {
 				System.out.println("Échec, " + e);
 			}

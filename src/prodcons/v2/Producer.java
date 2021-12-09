@@ -35,6 +35,6 @@ public class Producer extends Thread{
 		buffer.producerDead(); // après avoir fini ses taches il ne faut plus le compter comme actif
 		System.out.println("Producer " + id + " terminé"); 
 		// une fois qu'il a produit tous ses messages,
-		// il signale qu'il a termine toutes ses taches
+		// il signale qu'il a termine toutes ses taches et s'arrete
 	}
 }

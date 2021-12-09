@@ -71,7 +71,6 @@ public class ProdConsBuffer implements IProdConsBuffer {
 	
 	// teste que des producteurs n'ont pas finis, ou que le buffer n'est pas vide
 	public boolean ready() { 
-//		return ((nbProdAlive > 0) && (nMes != 0)) || (!isUsed);
 		return (nbProdAlive > 0) || ((nbProdAlive == 0) && (nMes != 0));
 	}
 

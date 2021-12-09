@@ -27,7 +27,7 @@ public class Producer extends Thread{
 				Message m = new Message(id*1000 + i); // creer un id unique de message pour le différencier
 				sleep(prodTime* 1000 + generator.nextInt(1000) - 500); //simulation du temps de production
 				buffer.put(m); // place le message dans le buffer
-				System.out.println("Producer " + id + " crée le message " + m.id);
+				System.out.println("Producer " + id + " a créé le message " + m.id);
 			} catch (InterruptedException e) {
 				System.out.println("Échec, " + e);
 			}

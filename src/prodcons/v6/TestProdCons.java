@@ -1,4 +1,4 @@
-package prodcons.v5;
+package prodcons.v6;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.Random;
 public class TestProdCons {
 	public static void main(String args[]) throws InvalidPropertiesFormatException, IOException, InterruptedException {
 		Properties properties = new Properties();
-		properties.loadFromXML(new FileInputStream("src/prodcons/v5/option.xml"));
+		properties.loadFromXML(new FileInputStream("src/prodcons/v6/option.xml"));
 		int nProd = Integer.parseInt(properties.getProperty("nProd"));
 		int nCons = Integer.parseInt(properties.getProperty("nCons"));
 		int bufSz = Integer.parseInt(properties.getProperty("bufSz"));

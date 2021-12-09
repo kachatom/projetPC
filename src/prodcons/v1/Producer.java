@@ -34,6 +34,6 @@ public class Producer extends Thread{
 		}
 		System.out.println("Producer " + id + " terminé"); 
 		// une fois qu'il a produit tous ses messages,
-		// il signale qu'il a termine toutes ses taches
+		// il signale qu'il a termine toutes ses taches et s'arrete
 	}
 }

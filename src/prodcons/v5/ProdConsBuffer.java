@@ -5,12 +5,12 @@ import java.util.concurrent.Semaphore;
 
 public class ProdConsBuffer implements IProdConsBuffer {
 
-	int nMesTotal; // nombre total de message produit ??
+	int nMesTotal; // nombre total de message produit
 	int bufSz; // taille du buffer
 	Message buffer[]; // liste des messages dans le buffer
 	int in, out; // indice d'entrée et de sorties des messages dans le buffer
 	int nbProdAlive; // nombre de producer qui n'ont pas fini toutes leur production
-	Semaphore sProd, sCons; // semaphore pour le consumer et consumer
+	Semaphore sProd, sCons; // semaphore pour le producer et le consumer
 
 	ProdConsBuffer(int bufsize, int nbProdAlive) {
 		nMesTotal = 0;
@@ -56,7 +56,7 @@ public class ProdConsBuffer implements IProdConsBuffer {
 	@Override
 	public Message[] get(int k) throws InterruptedException {
 		sCons.acquire(k); // on vérifie qu'on a k messages à lire dans le buffer, si oui nfree - k . sinon on attend
-		Message[] m = new Message[k]; // on crée un liste de messages de taille k
+		Message[] m = new Message[k]; // on crée une liste de messages de taille k
 		for (int i=0; i<k; i++) {
 			synchronized (this) { // synchronised pour etre sur d'être le seul à récupérer un msg à la fois
 				m[i] = buffer[out]; // on selectionne le premier message
