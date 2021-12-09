@@ -3,14 +3,14 @@ package prodcons.v1;
 import java.util.Random;
 
 public class Producer extends Thread{
-	private ProdConsBuffer buffer;
-	private boolean actif = true;
-	private int id;
-	private int prodTime;
-	private int minProd;
-	private int maxProd;
+	private ProdConsBuffer buffer; // buffer qui va contenir les messages produit et pas encore consommé
+	private int id; // id unique qui définit ce producer
+	private int prodTime; // temps de prod d'un message
+	private int minProd; // minimum de msg produit
+	private int maxProd; // max de msg produit
 
-	Producer(ProdConsBuffer b, int id, int prodTime, int minProd, int maxProd) {
+	//creation d'un produceur
+	Producer(ProdConsBuffer b, int id, int prodTime, int minProd, int maxProd) { 
 		this.buffer = b;
 		this.id = id;
 		this.prodTime = prodTime;
@@ -18,21 +18,22 @@ public class Producer extends Thread{
 		this.maxProd = maxProd;
 	}
 
-	public void run() {
+	public void run() {  // lancement d'un thread producer
 		System.out.println("Producer " + id + " lancé !");
 		Random generator = new Random();
-		int nbProd = generator.nextInt(maxProd-minProd)+minProd;
+		int nbProd = generator.nextInt(maxProd-minProd)+minProd;  // nb de messages à produire (semi random)
 		for (int i = 0; i<nbProd; i++) {
 			try {
-				sleep(prodTime* 1000 + generator.nextInt(1000) - 500);
-				Message m = new Message(id*1000 + i);
-				buffer.put(m);
-				System.out.println(id + " a créé le message " + m.id);
-				actif = false;
+				sleep(prodTime* 1000 + generator.nextInt(1000) - 500);  //simulation du temps de production
+				Message m = new Message(id*1000 + i);  // creer un id de message pour le différencier
+				buffer.put(m);  // place le message dans le buffer
+				System.out.println(id + " a créé le message " + m.id); // signalement
 			} catch (InterruptedException e) {
 				System.out.println("Échec, " + e);
 			}
 		}
-		System.out.println("Producer " + id + " terminé");
+		System.out.println("Producer " + id + " terminé"); 
+		// une fois qu'il a produit tous ses messages,
+		// il signale qu'il a termine toutes ses taches
 	}
 }
